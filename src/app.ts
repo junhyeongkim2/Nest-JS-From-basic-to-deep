@@ -1,25 +1,47 @@
 import * as express from "express";
 import catsRouter from "./cats/cats.route";
 
-const app: express.Express = express();
+class Server {
+  public app: express.Application;
 
-const data = [1, 2, 3, 4];
+  constructor() {
+    const app: express.Application = express();
+    this.app = app;
+  }
 
-//* logging middleware
-app.use((req, res, next) => {
-  console.log(req.rawHeaders[0]);
-  console.log("this is logging middleware");
-  next();
-});
+  private setRoute() {
+    this.app.use(catsRouter);
+  }
 
-//* json middleware
-app.use(express.json());
+  private setMiddleware() {
+    //* logging middleware
+    this.app.use((req, res, next) => {
+      console.log(req.rawHeaders[0]);
+      console.log("this is logging middleware");
+      next();
+    });
+    //* json middleware
+    this.app.use(express.json());
 
-app.use(catsRouter);
+    this.setRoute();
 
-//* READ 고양이 전체 데이터 다 조회
-//* READ 특정 고양이 데이터 조회
+    this.app.use((req, res, next) => {
+      console.log("this is error middleware");
+      res.send({ error: "404 not found error" });
+    });
+  }
 
-app.listen(8000, () => {
-  console.log("server is on...");
-});
+  public listen() {
+    this.setMiddleware();
+    this.app.listen(8000, () => {
+      console.log("server is on...");
+    });
+  }
+}
+
+function init() {
+  const server = new Server();
+  server.listen();
+}
+
+init();
