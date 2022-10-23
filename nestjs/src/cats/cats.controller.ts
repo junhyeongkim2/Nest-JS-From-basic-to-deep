@@ -1,5 +1,5 @@
 import { CatsService } from './cats.service';
-import { Controller, Delete, Get, Patch, Post } from '@nestjs/common';
+import { Controller, Delete, Get, Patch, Post, Put } from '@nestjs/common';
 
 @Controller('cats')
 export class CatsController {
