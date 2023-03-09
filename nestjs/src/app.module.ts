@@ -7,6 +7,7 @@ import { CatsModule } from './cats/cats.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import * as mongoose from 'mongoose';
+import { Cat, CatSchema } from './cats/cats.schema';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import * as mongoose from 'mongoose';
       useUnifiedTopology: true,
     }),
     CatsModule,
+    MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }]),
   ],
   controllers: [AppController],
   providers: [AppService, CatsService],
