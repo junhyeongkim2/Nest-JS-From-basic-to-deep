@@ -10,6 +10,16 @@ const options: SchemaOptions = {
 @Schema(options)
 export class Cat extends Document {
   @ApiProperty({
+    example: 'rlawnfpr12',
+    description: 'id',
+    required: true,
+  })
+  @Prop({ required: true, unique: true })
+  @IsEmail()
+  @IsNotEmpty()
+  id: string;
+
+  @ApiProperty({
     example: 'rlawnfpr12@naver.com',
     description: 'email',
     required: true,
@@ -40,7 +50,7 @@ export class Cat extends Document {
 
   @ApiProperty({
     example: 'imgpath/path/rightaway',
-    description: 'imaUrl',
+    description: 'imgUrl',
     required: true,
   })
   @Prop()
