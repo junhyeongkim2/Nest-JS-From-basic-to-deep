@@ -10,49 +10,42 @@ const options: SchemaOptions = {
 @Schema(options)
 export class Cat extends Document {
   @ApiProperty({
-    example: 'rlawnfpr12',
-    description: 'id',
-    required: true,
-  })
-  @Prop({ required: true, unique: true })
-  @IsEmail()
-  @IsNotEmpty()
-  id: string;
-
-  @ApiProperty({
-    example: 'rlawnfpr12@naver.com',
+    example: 'amamov@kakao.com',
     description: 'email',
     required: true,
   })
-  @Prop({ required: true, unique: true })
+  @Prop({
+    required: true,
+    unique: true,
+  })
   @IsEmail()
   @IsNotEmpty()
   email: string;
 
   @ApiProperty({
-    example: 'JunHyeong',
+    example: 'amamov',
     description: 'name',
     required: true,
   })
-  @Prop({ required: true })
+  @Prop({
+    required: true,
+  })
   @IsString()
   @IsNotEmpty()
   name: string;
+
   @ApiProperty({
-    example: 'junhyeong123',
+    example: '23810',
     description: 'password',
     required: true,
   })
-  @Prop({ required: true })
+  @Prop({
+    required: true,
+  })
   @IsString()
   @IsNotEmpty()
   password: string;
 
-  @ApiProperty({
-    example: 'imgpath/path/rightaway',
-    description: 'imgUrl',
-    required: true,
-  })
   @Prop()
   @IsString()
   imgUrl: string;

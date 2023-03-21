@@ -8,6 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import * as mongoose from 'mongoose';
 import { Cat, CatSchema } from './cats/cats.schema';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { Cat, CatSchema } from './cats/cats.schema';
     }),
     CatsModule,
     MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }]),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService, CatsService],
