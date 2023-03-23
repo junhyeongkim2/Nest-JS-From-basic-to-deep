@@ -1,6 +1,4 @@
 import { LoggerMiddleware } from './logger.middleware';
-import { CatsService } from './cats/cats.service';
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
@@ -9,6 +7,8 @@ import { ConfigModule } from '@nestjs/config';
 import * as mongoose from 'mongoose';
 import { Cat, CatSchema } from './cats/cats.schema';
 import { AuthModule } from './auth/auth.module';
+import { CatsService } from './cats/services/cats.service';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
 @Module({
   imports: [
