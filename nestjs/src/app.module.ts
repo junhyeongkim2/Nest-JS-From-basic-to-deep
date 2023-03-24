@@ -9,6 +9,7 @@ import { Cat, CatSchema } from './cats/cats.schema';
 import { AuthModule } from './auth/auth.module';
 import { CatsService } from './cats/services/cats.service';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { CommentsModule } from './comments/comments.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
     CatsModule,
     MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }]),
     AuthModule,
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [AppService, CatsService],
