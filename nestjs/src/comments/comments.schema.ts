@@ -4,6 +4,7 @@ import { IsNotEmpty, IsPositive, IsString } from 'class-validator';
 import { Document, SchemaOptions, Types } from 'mongoose';
 
 const options: SchemaOptions = {
+  collection: 'comments',
   timestamps: true,
 };
 
@@ -53,13 +54,6 @@ export class Comments extends Document {
   })
   @IsNotEmpty()
   info: Types.ObjectId;
-
-  readonly readOnlyData: {
-    id: string;
-    email: string;
-    name: string;
-    imgUrl: string;
-  };
 }
 
-export const CatSchema = SchemaFactory.createForClass(Comments);
+export const CommentsSchema = SchemaFactory.createForClass(Comments);
