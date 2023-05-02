@@ -18,6 +18,8 @@ export class AwsService {
       region: this.configService.get('AWS_S3_REGION'),
     });
     this.S3_BUCKET_NAME = this.configService.get('AWS_S3_BUCKET_NAME'); // nest-s3
+
+    this.S3_BUCKET_NAME = this.configService.get('AWS_S3_BUCKET_NAME123'); // nest-s3
   }
 
   async uploadFileToS3(
